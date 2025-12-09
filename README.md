@@ -10,13 +10,13 @@ Full-stack school management system with role-based dashboards for Admin, Princi
 ## Backend Setup
 
 ```bash
-cd /home/bsoft/School-management
+cd /home/School-management
 python3 -m venv venv
 source venv/bin/activate
 pip install -r requirements.txt
-python manage.py migrate
-python manage.py createsuperuser  # then set role=ADMIN in /admin
-python manage.py runserver
+python3 manage.py migrate
+python3 manage.py createsuperuser  # then set role=ADMIN in /admin
+python3 manage.py runserver 8001
 ```
 
 ### Configure data
