@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body,
+#root {
+  @apply h-full text-slate-100 antialiased;
+  background-color: #020617; /* Tailwind's slate-950 equivalent without using @apply */
+}
+
+body {
+  @apply m-0;
+}
+
+/* Style calendar icon for date inputs in dark theme */
+input[type='date']::-webkit-calendar-picker-indicator {
+  filter: invert(1);
+}
+
+input[type='date']::-moz-focus-inner,
+input[type='date']::-moz-calendar-picker-indicator {
+  filter: invert(1);
+}
+
