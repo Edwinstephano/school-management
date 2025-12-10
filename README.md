@@ -35,7 +35,7 @@ python3 manage.py runserver 8001
 ## Frontend Setup
 
 ```bash
-cd /home/bsoft/School-management/frontend
+cd /home/School-management/frontend
 npm install
 npm run dev
 ```
