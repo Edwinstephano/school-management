@@ -8,37 +8,42 @@ export default function StatDonutCard({ label, value, accent = 'text-primary-400
   const offset = circumference * (1 - progress)
 
   return (
-    <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-5 shadow-sm shadow-slate-900/40">
-      <div className="flex items-center gap-4">
-        <div className="relative h-24 w-24 flex-shrink-0">
-          <svg viewBox="0 0 96 96" className="h-full w-full">
-            <circle
-              cx="48"
-              cy="48"
-              r={radius}
-              className="stroke-slate-800"
-              strokeWidth="8"
-              fill="transparent"
-            />
-            <circle
-              cx="48"
-              cy="48"
-              r={radius}
-              className={`${ring} transition-all duration-500`}
-              strokeWidth="8"
-              fill="transparent"
-              strokeDasharray={circumference}
-              strokeDashoffset={offset}
-              strokeLinecap="round"
-            />
-          </svg>
-          <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-            <span className={`text-3xl font-semibold ${accent}`}>{value}</span>
-          </div>
-        </div>
-        <div>
-          <div className="text-xs uppercase tracking-wide text-slate-400">{label}</div>
-        </div>
+    <div className="flex items-center gap-4 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-950/70 p-4">
+      <svg width="80" height="80" viewBox="0 0 80 80">
+        <circle
+          cx="40"
+          cy="40"
+          r="30"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="8"
+          className="text-slate-200 dark:text-slate-800"
+        />
+        <circle
+          cx="40"
+          cy="40"
+          r="30"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="8"
+          strokeDasharray={`${circumference} ${circumference}`}
+          strokeDashoffset={offset}
+          strokeLinecap="round"
+          className="text-primary-600 dark:text-primary-500"
+          style={{ transform: 'rotate(-90deg)', transformOrigin: '50% 50%' }}
+        />
+        <text
+          x="40"
+          y="40"
+          textAnchor="middle"
+          dominantBaseline="central"
+          className="fill-slate-900 dark:fill-slate-100 text-xl font-bold"
+        >
+          {value}
+        </text>
+      </svg>
+      <div>
+        <div className="text-xs uppercase tracking-wide text-slate-600 dark:text-slate-400">{label}</div>
       </div>
     </div>
   )

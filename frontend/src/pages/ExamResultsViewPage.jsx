@@ -47,15 +47,15 @@ export default function ExamResultsViewPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold text-slate-50">Exam Results</h1>
-        <p className="text-sm text-slate-400">View saved exam results by class and exam</p>
+        <h1 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">Exam Results</h1>
+        <p className="text-sm text-slate-600 dark:text-slate-400">View saved exam results by class and exam</p>
       </header>
-      <div className="space-y-4 rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+      <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="grid gap-3 md:grid-cols-3">
           <div>
-            <label className="mb-1 block text-xs text-slate-300">Class</label>
+            <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Class</label>
             <select
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+              className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
               value={selectedClassId}
               onChange={(e) => {
                 setSelectedClassId(e.target.value)
@@ -71,9 +71,9 @@ export default function ExamResultsViewPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs text-slate-300">Exam</label>
+            <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Exam</label>
             <select
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+              className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
               value={selectedExamId}
               onChange={(e) => setSelectedExamId(e.target.value)}
               disabled={!selectedClassId}
@@ -88,11 +88,11 @@ export default function ExamResultsViewPage() {
           </div>
         </div>
         <div className="mt-4">
-          <div className="mb-2 text-xs uppercase tracking-wide text-slate-400">Results</div>
+          <div className="mb-2 text-xs uppercase tracking-wide text-slate-600 dark:text-slate-400">Results</div>
           <div className="overflow-x-auto text-sm">
             <table className="min-w-full border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-left text-xs uppercase text-slate-400">
+                <tr className="border-b border-slate-200 text-left text-xs uppercase text-slate-600 dark:border-slate-800 dark:text-slate-400">
                   <th className="px-2 py-2">Student</th>
                   <th className="px-2 py-2">Roll</th>
                   <th className="px-2 py-2">Marks</th>
@@ -103,18 +103,21 @@ export default function ExamResultsViewPage() {
               </thead>
               <tbody>
                 {results.map((r) => (
-                  <tr key={r.id} className="border-b border-slate-900/60 hover:bg-slate-900/60">
-                    <td className="px-2 py-2 text-slate-100">{r.student?.name}</td>
-                    <td className="px-2 py-2 text-slate-300">{r.student?.roll_number}</td>
-                    <td className="px-2 py-2 text-slate-100">{r.marks}</td>
-                    <td className="px-2 py-2 text-slate-100">{r.total_marks}</td>
-                    <td className="px-2 py-2 text-slate-100">{r.grade}</td>
-                    <td className="px-2 py-2 text-slate-300">{r.remarks}</td>
+                  <tr
+                    key={r.id}
+                    className="border-b border-slate-100 hover:bg-slate-50 dark:border-slate-900/60 dark:hover:bg-slate-900/60"
+                  >
+                    <td className="px-2 py-2 text-slate-900 dark:text-slate-100">{r.student?.name}</td>
+                    <td className="px-2 py-2 text-slate-600 dark:text-slate-300">{r.student?.roll_number}</td>
+                    <td className="px-2 py-2 text-slate-900 dark:text-slate-100">{r.marks}</td>
+                    <td className="px-2 py-2 text-slate-900 dark:text-slate-100">{r.total_marks}</td>
+                    <td className="px-2 py-2 text-slate-900 dark:text-slate-100">{r.grade}</td>
+                    <td className="px-2 py-2 text-slate-600 dark:text-slate-300">{r.remarks}</td>
                   </tr>
                 ))}
                 {results.length === 0 && (
                   <tr>
-                    <td className="px-2 py-4 text-sm text-slate-500" colSpan={6}>
+                    <td className="px-2 py-4 text-sm text-slate-500 dark:text-slate-500" colSpan={6}>
                       Select class and exam to view results.
                     </td>
                   </tr>

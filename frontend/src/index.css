@@ -5,8 +5,7 @@
 html,
 body,
 #root {
-  @apply h-full text-slate-100 antialiased;
-  background-color: #020617; /* Tailwind's slate-950 equivalent without using @apply */
+  @apply h-full antialiased;
 }
 
 body {

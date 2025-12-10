@@ -17,13 +17,35 @@ import ParentsPage from './pages/ParentsPage.jsx'
 import StaffUsersPage from './pages/StaffUsersPage.jsx'
 import Layout from './components/Layout.jsx'
 
+function getDefaultRoute(user) {
+  if (!user) return '/login'
+  // Superusers should go to admin dashboard
+  if (user.is_superuser) {
+    return '/admin'
+  }
+  switch (user.role) {
+    case 'ADMIN':
+      return '/admin'
+    case 'PRINCIPAL':
+      return '/principal'
+    case 'TEACHER':
+      return '/teacher'
+    case 'STAFF':
+      return '/staff/exams'
+    case 'PARENT':
+      return '/parent'
+    default:
+      return '/login'
+  }
+}
+
 function ProtectedRoute({ children, roles }) {
   const { user, loading } = useAuth()
 
   if (loading) {
     return (
-      <div className="flex h-full items-center justify-center bg-background">
-        <div className="h-10 w-10 animate-spin rounded-full border-4 border-primary-500 border-t-transparent" />
+      <div className="flex h-full items-center justify-center bg-slate-50 dark:bg-background">
+        <div className="text-slate-600 dark:text-slate-400">Loading...</div>
       </div>
     )
   }
@@ -32,8 +54,13 @@ function ProtectedRoute({ children, roles }) {
     return <Navigate to="/login" replace />
   }
 
+  // Allow superusers to access all routes
+  if (user.is_superuser) {
+    return children
+  }
+
   if (roles && !roles.includes(user.role)) {
-    return <Navigate to="/dashboard" replace />
+    return <Navigate to={getDefaultRoute(user)} replace />
   }
 
   return children
@@ -61,7 +88,7 @@ function DashboardRedirect() {
 
 function App() {
   return (
-    <div className="min-h-full bg-background">
+    <div className="min-h-full bg-slate-50 dark:bg-background">
       <Routes>
         <Route path="/login" element={<LoginPage />} />
 

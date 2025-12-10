@@ -95,15 +95,15 @@ export default function ResultsEntryPage() {
   return (
     <div className="space-y-6">
       <header>
-        <h1 className="text-2xl font-semibold text-slate-50">Exam Results Entry</h1>
-        <p className="text-sm text-slate-400">Enter marks and grades for students</p>
+        <h1 className="text-2xl font-semibold text-slate-900 dark:text-slate-50">Exam Results Entry</h1>
+        <p className="text-sm text-slate-600 dark:text-slate-400">Enter marks and grades for students</p>
       </header>
-      <div className="space-y-4 rounded-xl border border-slate-800 bg-slate-950/70 p-4">
+      <div className="space-y-4 rounded-xl border border-slate-200 bg-white p-4 shadow-sm dark:border-slate-800 dark:bg-slate-900">
         <div className="grid gap-3 md:grid-cols-3">
           <div>
-            <label className="mb-1 block text-xs text-slate-300">Class</label>
+            <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Class</label>
             <select
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+              className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
               value={selectedClassId}
               onChange={(e) => setSelectedClassId(e.target.value)}
             >
@@ -116,9 +116,9 @@ export default function ResultsEntryPage() {
             </select>
           </div>
           <div>
-            <label className="mb-1 block text-xs text-slate-300">Exam</label>
+            <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Exam</label>
             <select
-              className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+              className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
               value={examForm.exam_id || ''}
               onChange={(e) => handleExamSelect(e.target.value)}
             >
@@ -135,17 +135,17 @@ export default function ResultsEntryPage() {
           {!examForm.exam_id && (
             <div className="grid gap-3 md:grid-cols-2">
               <div>
-                <label className="mb-1 block text-xs text-slate-300">Exam Name</label>
+                <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Exam Name</label>
                 <input
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                   value={examForm.name}
                   onChange={(e) => setExamForm((f) => ({ ...f, name: e.target.value }))}
                 />
               </div>
               <div>
-                <label className="mb-1 block text-xs text-slate-300">Subject</label>
+                <label className="mb-1 block text-xs text-slate-700 dark:text-slate-300">Subject</label>
                 <input
-                  className="w-full rounded-md border border-slate-700 bg-slate-900 px-3 py-2 text-sm text-slate-100 outline-none focus:border-primary-500"
+                  className="w-full rounded-md border border-slate-300 bg-white px-3 py-2 text-sm text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                   value={examForm.subject}
                   onChange={(e) => setExamForm((f) => ({ ...f, subject: e.target.value }))}
                 />
@@ -154,11 +154,11 @@ export default function ResultsEntryPage() {
           )}
         </div>
         <div className="mt-4">
-          <div className="mb-2 text-xs uppercase tracking-wide text-slate-400">Students</div>
+          <div className="mb-2 text-xs uppercase tracking-wide text-slate-600 dark:text-slate-400">Students</div>
           <div className="overflow-x-auto text-sm">
             <table className="min-w-full border-collapse">
               <thead>
-                <tr className="border-b border-slate-800 text-left text-xs uppercase text-slate-400">
+                <tr className="border-b border-slate-200 text-left text-xs uppercase text-slate-600 dark:border-slate-800 dark:text-slate-400">
                   <th className="px-2 py-2">Name</th>
                   <th className="px-2 py-2">Roll</th>
                   <th className="px-2 py-2">Marks</th>
@@ -169,13 +169,16 @@ export default function ResultsEntryPage() {
               </thead>
               <tbody>
                 {currentClassStudents.map((s) => (
-                  <tr key={s.id} className="border-b border-slate-900/60 hover:bg-slate-900/60">
-                    <td className="px-2 py-2 text-slate-100">{s.name}</td>
-                    <td className="px-2 py-2 text-slate-300">{s.roll_number}</td>
+                  <tr
+                    key={s.id}
+                    className="border-b border-slate-100 hover:bg-slate-50 dark;border-slate-900/60 dark:hover:bg-slate-900/60"
+                  >
+                    <td className="px-2 py-2 text-slate-900 dark:text-slate-100">{s.name}</td>
+                    <td className="px-2 py-2 text-slate-600 dark:text-slate-300">{s.roll_number}</td>
                     <td className="px-2 py-2">
                       <input
                         type="number"
-                        className="w-20 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100 outline-none focus:border-primary-500"
+                        className="w-20 rounded-md border border-slate-300 bg-white px-2 py-1 text-xs text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                         value={rows[s.id]?.marks || ''}
                         onChange={(e) => handleRowChange(s.id, 'marks', e.target.value)}
                       />
@@ -183,21 +186,21 @@ export default function ResultsEntryPage() {
                     <td className="px-2 py-2">
                       <input
                         type="number"
-                        className="w-20 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100 outline-none focus:border-primary-500"
+                        className="w-20 rounded-md border border-slate-300 bg-white px-2 py-1 text-xs text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                         value={rows[s.id]?.total_marks || ''}
                         onChange={(e) => handleRowChange(s.id, 'total_marks', e.target.value)}
                       />
                     </td>
                     <td className="px-2 py-2">
                       <input
-                        className="w-16 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100 outline-none focus:border-primary-500"
+                        className="w-16 rounded-md border border-slate-300 bg-white px-2 py-1 text-xs text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                         value={rows[s.id]?.grade || ''}
                         onChange={(e) => handleRowChange(s.id, 'grade', e.target.value)}
                       />
                     </td>
                     <td className="px-2 py-2">
                       <input
-                        className="w-40 rounded-md border border-slate-700 bg-slate-900 px-2 py-1 text-xs text-slate-100 outline-none focus:border-primary-500"
+                        className="w-40 rounded-md border border-slate-300 bg-white px-2 py-1 text-xs text-slate-900 outline-none focus:border-primary-500 focus:ring-1 focus:ring-primary-500 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-100"
                         value={rows[s.id]?.remarks || ''}
                         onChange={(e) => handleRowChange(s.id, 'remarks', e.target.value)}
                       />
@@ -206,7 +209,7 @@ export default function ResultsEntryPage() {
                 ))}
                 {currentClassStudents.length === 0 && (
                   <tr>
-                    <td colSpan={6} className="px-2 py-4 text-sm text-slate-500">
+                    <td colSpan={6} className="px-2 py-4 text-sm text-slate-500 dark:text-slate-500">
                       Select a class to load students.
                     </td>
                   </tr>
